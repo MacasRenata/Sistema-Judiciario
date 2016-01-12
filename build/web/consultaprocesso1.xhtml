@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b = "http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="templates/padrao.xhtml">
+        <ui:define name="conteudo">
+      
+      <p:panel id="basic" header="Informações Processo" style="margin-bottom:20px">
+            <div id="formDados">
+                <h:messages infoClass="msgInfo" errorClass="msgErro"/>
+                <h:form>
+                    <h:outputLabel for="processo" value="Selecione o processo: "/>
+                    <h:selectOneMenu id="processo" value="#{justicaBean.idprocessoSelecionado}">
+                        <f:selectItems value="#{justicaBean.listaprocesso}" var="a" itemValue="#{p.codigo}" itemLabel="#{p.codigo}"/>
+                    </h:selectOneMenu>
+               
+                <h:panelGroup> 
+                    <b:commandButton class="btn btn-default" value="Consultar" action="#{justicaBean.consultaprocesso}"/>
+                    <b:button class="btn btn-default" value="Voltar" outcome="index"/>
+                </h:panelGroup>
+                    <h:panelGrid columns="2">
+                       <p:dataTable value="#{justicaBean.listaprocesso}" var="processo">
+                <p:column headerText="Código">
+                  #{processo.codigo}
+                   </p:column>
+                <p:column headerText="Descrição">
+                #{processo.descricao}
+                </p:column>
+               <p:column headerText="Cliente">
+               #{processo.cliente.nome}
+            </p:column>
+            <p:column headerText="Detalhes">
+                <p:commandLink id="ajax" action="consultaprocesso2">
+                    <h:outputText value="Detalhes do processo" />
+                </p:commandLink>
+            </p:column>
+               </p:dataTable>       
+                    </h:panelGrid>   
+                </h:form>
+            </div>
+         </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>

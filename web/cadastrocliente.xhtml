@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b = "http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="templates/padrao.xhtml">
+        <ui:define name="conteudo">
+           
+      <p:panel id="basic" header="Cadastro de Cliente" style="margin-bottom:20px">
+            <div id="formDados">
+                <h:messages infoClass="msgInfo" errorClass="msgErro"/>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="txtCodigo" value="Código: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtCodigo" maxlength="60" size="50" value="#{justicaBean.cliente.codigo}"/>
+                        
+                        <h:outputLabel for="txtNomecliente" value="Nome: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtNomecliente" maxlength="60" size="50" value="#{justicaBean.cliente.nome}"/>
+                        
+                        <h:outputLabel for="txtCPF" value="CPF: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtCPF" maxlength="11" size="12" value="#{justicaBean.cliente.cpf}"/>
+                        
+                        <h:outputLabel for="txtTelefone" value="Telefones: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtTelefone" maxlength="60" size="50" value="#{justicaBean.cliente.telefone}"/>
+                        
+                        <h:outputLabel for="txtEndereco" value="Endereço: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtEndereco" maxlength="200" size="200" value="#{justicaBean.cliente.endereco}"/>
+                       </h:panelGrid>
+                    
+                       <h:panelGroup> 
+                    <b:commandButton class="btn btn-default" value="Cadastrar" action="#{justicaBean.incluircliente}"/>
+                    <b:button class="btn btn-default" value="Voltar" outcome="index"/>
+                      </h:panelGroup>
+                </h:form>
+            </div>
+         </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+

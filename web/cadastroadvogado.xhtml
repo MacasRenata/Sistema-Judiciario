@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b = "http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="templates/padrao.xhtml">
+        <ui:define name="conteudo">
+           
+      <p:panel id="basic" header="Cadastro de Advogado" style="margin-bottom:20px">
+            <div id="formDados">
+                <h:messages infoClass="msgInfo" errorClass="msgErro"/>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="txtCodigo" value="Código: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtCodigo" maxlength="60" size="50" value="#{justicaBean.advogado.codigo}"/>
+                        
+                        <h:outputLabel for="txtNome" value="Nome: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtNome" maxlength="60" size="50" value="#{justicaBean.advogado.nome}"/>
+                        
+                        <h:outputLabel for="txtOab" value="CPF: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtOab" maxlength="50" size="60" value="#{justicaBean.advogado.registroOAB}"/>
+                        
+                       </h:panelGrid>
+                    
+                       <h:panelGroup> 
+                    <b:commandButton class="btn btn-default" value="Cadastrar" action="#{justicaBean.incluiradvogado}"/>
+                    <b:button class="btn btn-default" value="Voltar" outcome="index"/>
+                      </h:panelGroup>
+                </h:form>
+            </div>
+         </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>
+

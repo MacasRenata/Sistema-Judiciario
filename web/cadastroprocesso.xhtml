@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b = "http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="templates/padrao.xhtml">
+        <ui:define name="conteudo">
+           
+      <p:panel id="basic" header="Cadastro de Processo" style="margin-bottom:20px">
+            <div id="formDados">
+                <h:messages infoClass="msgInfo" errorClass="msgErro"/>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="txtCodigo" value="Código: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtCodigo" maxlength="60" size="50" value="#{justicaBean.processo.codigo}"/>
+                        
+                        <h:outputLabel for="txtDescricao" value="Descrição: " style="color:gray;font-weight:bold"/>
+                        <h:inputText id="txtDescricao" maxlength="60" size="50" value="#{justicaBean.processo.descricao}"/>
+                        
+                          <p:outputLabel value="Data de Abertura" style="color:gray;font-weight:bold"/>
+                    <p:column colspan="3">        
+                        <p:calendar id="dtInicial" value="#{justicaBean.processo.dataDeAbertura}" pattern="MM/dd/yyyy" showButtonPanel="true" navigator="true" showOn="button"/> 
+                    </p:column>
+                       
+                    <p:outputLabel value="Estado:" style="color:gray;font-weight:bold"/>
+                             <p:selectOneMenu id="estado" value="#{justicaBean.processo}">
+                                   <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
+                                   <f:selectItem itemLabel="Rio Grande do Sul" itemValue="1"/>
+                                   <f:selectItem itemLabel="São Paulo" itemValue="2"/>
+                                   <f:selectItem itemLabel="Rio de Janeiro" itemValue="3"/>
+                                   <f:selectItem itemLabel="Minas Gerais" itemValue="4"/>
+                                   <f:selectItem itemLabel="Santa Catarina" itemValue="5"/>
+                                   <f:selectItem itemLabel="Parana" itemValue="6"/>
+                                   <f:selectItem itemLabel="Goias" itemValue="7"/>
+                                   <f:selectItem itemLabel="Tocantis" itemValue="8"/>
+                                   <f:selectItem itemLabel="Amazonas" itemValue="9"/>
+                                   <f:selectItem itemLabel="Alagoas" itemValue="10"/>
+                                   <f:selectItem itemLabel="Rio Grande do Norte" itemValue="11"/>
+                                   <f:selectItem itemLabel="Bahia" itemValue="12"/>
+                                   <f:selectItem itemLabel="Pernanmbuco" itemValue="13"/>
+                                   <f:selectItem itemLabel="Acre" itemValue="14"/>
+                                   <f:selectItem itemLabel="Brasilia" itemValue="15"/>
+                             </p:selectOneMenu>     
+                    
+                     <h:outputLabel for="txtNomecliente" value="Nome Cliente:" style="color:gray;font-weight:bold"/>
+                        <p:selectCheckboxMenu id="nomecliente" value="#{justicabean.listacliente}" label="cliente"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                 <f:selectItems value="#{justicabean.cliente.nome}" />
+                        </p:selectCheckboxMenu>
+                     
+                     
+                      <h:outputLabel for="txtNomeadvogado" value="Nome Advogado:" style="color:gray;font-weight:bold"/>
+                        <p:selectCheckboxMenu id="nomeadvogado" value="#{justicabean.listaadvogado}" label="advogado"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                 <f:selectItems value="#{justicabean.advogado.nome}" />
+                        </p:selectCheckboxMenu>
+
+                       </h:panelGrid>
+                    
+                       <h:panelGroup> 
+                    <b:commandButton class="btn btn-default" value="Cadastrar" action="#{justicaBean.incluirprocesso}"/>
+                    <b:button class="btn btn-default" value="Voltar" outcome="index"/>
+                      </h:panelGroup>
+                </h:form>
+            </div>
+         </p:panel>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+
